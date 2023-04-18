@@ -1,0 +1,20 @@
+namespace luffaCrypto
+{
+
+};
+
+interface Client
+{
+    string new_aes_key();
+
+    string aes_encrypt(string origin_data,string hex_key);
+    string aes_decrypt(string ciphertext,string hex_key); 
+
+
+    string des_encrypt(string origin_data,string hex_key);
+
+    string des_decrypt(string ciphertext,string hex_key); 
+    string new_des_key();
+
+
+};
