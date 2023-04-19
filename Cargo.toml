@@ -17,7 +17,6 @@ hex = "0.4.2"
 des = "0.8.1"
 rand = "0.8.4"
 uniffi = { version = "0.23.0", features = ["cli"] }
-ndk = "0.7.0"
 
 [build-dependencies]
 uniffi = { version = "0.23.0", features = ["build"] }

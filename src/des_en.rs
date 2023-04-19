@@ -11,7 +11,7 @@ use base64::{encode, decode};
 use rand::{Rng, thread_rng};
 
 pub struct DesUtil {
-
+    
 }
 
 
