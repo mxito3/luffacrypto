@@ -5,13 +5,22 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "luffacrypto"
+crate-type = [ "staticlib" ]
+
+
 [dependencies]
 aes = "0.8.2"
 base64 = "0.21.0"
 hex = "0.4.2"
 des = "0.8.1"
 rand = "0.8.4"
+uniffi = { version = "0.23.0", features = ["cli"] }
+ndk = "0.7.0"
 
+[build-dependencies]
+uniffi = { version = "0.23.0", features = ["build"] }
 
 
 [dependencies.uuid]
@@ -21,3 +30,11 @@ features = [
     "fast-rng",          # Use a faster (but still sufficiently random) RNG
     "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
 ]
+
+
+
+
+[[bin]]
+# This can be whatever name makes sense for your project, but the rest of this tutorial assumes uniffi-bindgen.
+name = "uniffi-bindgen"
+path = "./src/uniffi-bindgen.rs"
