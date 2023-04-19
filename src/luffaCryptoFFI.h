@@ -46,47 +46,43 @@ typedef struct RustCallStatus {
 // ⚠️ increment the version suffix in all instances of UNIFFI_SHARED_HEADER_V4 in this file.           ⚠️
 #endif // def UNIFFI_SHARED_H
 
-void ffi_luffaCrypto_6c6a_Client_object_free(
-      void*_Nonnull ptr,
+RustBuffer Luffacrypto_8a81_new_aes_key(
+      
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_new_aes_key(
-      void*_Nonnull ptr,
+RustBuffer Luffacrypto_8a81_aes_encrypt(
+      RustBuffer origin_data,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_aes_encrypt(
-      void*_Nonnull ptr,RustBuffer origin_data,RustBuffer hex_key,
+RustBuffer Luffacrypto_8a81_aes_decrypt(
+      RustBuffer ciphertext,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_aes_decrypt(
-      void*_Nonnull ptr,RustBuffer ciphertext,RustBuffer hex_key,
+RustBuffer Luffacrypto_8a81_des_encrypt(
+      RustBuffer origin_data,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_des_encrypt(
-      void*_Nonnull ptr,RustBuffer origin_data,RustBuffer hex_key,
+RustBuffer Luffacrypto_8a81_des_decrypt(
+      RustBuffer ciphertext,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_des_decrypt(
-      void*_Nonnull ptr,RustBuffer ciphertext,RustBuffer hex_key,
+RustBuffer Luffacrypto_8a81_new_des_key(
+      
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer luffaCrypto_6c6a_Client_new_des_key(
-      void*_Nonnull ptr,
-    RustCallStatus *_Nonnull out_status
-    );
-RustBuffer ffi_luffaCrypto_6c6a_rustbuffer_alloc(
+RustBuffer ffi_Luffacrypto_8a81_rustbuffer_alloc(
       int32_t size,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer ffi_luffaCrypto_6c6a_rustbuffer_from_bytes(
+RustBuffer ffi_Luffacrypto_8a81_rustbuffer_from_bytes(
       ForeignBytes bytes,
     RustCallStatus *_Nonnull out_status
     );
-void ffi_luffaCrypto_6c6a_rustbuffer_free(
+void ffi_Luffacrypto_8a81_rustbuffer_free(
       RustBuffer buf,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer ffi_luffaCrypto_6c6a_rustbuffer_reserve(
+RustBuffer ffi_Luffacrypto_8a81_rustbuffer_reserve(
       RustBuffer buf,int32_t additional,
     RustCallStatus *_Nonnull out_status
     );

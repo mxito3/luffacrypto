@@ -5,8 +5,8 @@ import Foundation
 // Depending on the consumer's build setup, the low-level FFI code
 // might be in a separate module, or it might be compiled inline into
 // this module. This is a bit of light hackery to work with both.
-#if canImport(luffaCryptoFFI)
-import luffaCryptoFFI
+#if canImport(LuffacryptoFFI)
+import LuffacryptoFFI
 #endif
 
 fileprivate extension RustBuffer {
@@ -19,13 +19,13 @@ fileprivate extension RustBuffer {
     }
 
     static func from(_ ptr: UnsafeBufferPointer<UInt8>) -> RustBuffer {
-        try! rustCall { ffi_luffaCrypto_6c6a_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
+        try! rustCall { ffi_Luffacrypto_8a81_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
     }
 
     // Frees the buffer in place.
     // The buffer must not be used after this is called.
     func deallocate() {
-        try! rustCall { ffi_luffaCrypto_6c6a_rustbuffer_free(self, $0) }
+        try! rustCall { ffi_Luffacrypto_8a81_rustbuffer_free(self, $0) }
     }
 }
 
@@ -318,142 +318,98 @@ fileprivate struct FfiConverterString: FfiConverter {
     }
 }
 
-
-public protocol ClientProtocol {
-    func `newAesKey`()  -> String
-    func `aesEncrypt`(`originData`: String, `hexKey`: String)  -> String
-    func `aesDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String
-    func `desEncrypt`(`originData`: String, `hexKey`: String)  -> String
-    func `desDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String
-    func `newDesKey`()  -> String
+public func `newAesKey`()  -> String {
+    return try! FfiConverterString.lift(
+        try!
     
-}
-
-public class Client: ClientProtocol {
-    fileprivate let pointer: UnsafeMutableRawPointer
-
-    // TODO: We'd like this to be `private` but for Swifty reasons,
-    // we can't implement `FfiConverter` without making this `required` and we can't
-    // make it `required` without making it `public`.
-    required init(unsafeFromRawPointer pointer: UnsafeMutableRawPointer) {
-        self.pointer = pointer
-    }
-
-    deinit {
-        try! rustCall { ffi_luffaCrypto_6c6a_Client_object_free(pointer, $0) }
-    }
-
-    
-
-    
-    public func `newAesKey`()  -> String {
-        return try! FfiConverterString.lift(
-            try!
     rustCall() {
     
-    luffaCrypto_6c6a_Client_new_aes_key(self.pointer, $0
+    Luffacrypto_8a81_new_aes_key($0)
+}
     )
 }
-        )
-    }
-    public func `aesEncrypt`(`originData`: String, `hexKey`: String)  -> String {
-        return try! FfiConverterString.lift(
-            try!
+
+
+
+public func `aesEncrypt`(`originData`: String, `hexKey`: String)  -> String {
+    return try! FfiConverterString.lift(
+        try!
+    
     rustCall() {
     
-    luffaCrypto_6c6a_Client_aes_encrypt(self.pointer, 
+    Luffacrypto_8a81_aes_encrypt(
         FfiConverterString.lower(`originData`), 
-        FfiConverterString.lower(`hexKey`), $0
+        FfiConverterString.lower(`hexKey`), $0)
+}
     )
 }
-        )
-    }
-    public func `aesDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
-        return try! FfiConverterString.lift(
-            try!
+
+
+
+public func `aesDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
+    return try! FfiConverterString.lift(
+        try!
+    
     rustCall() {
     
-    luffaCrypto_6c6a_Client_aes_decrypt(self.pointer, 
+    Luffacrypto_8a81_aes_decrypt(
         FfiConverterString.lower(`ciphertext`), 
-        FfiConverterString.lower(`hexKey`), $0
+        FfiConverterString.lower(`hexKey`), $0)
+}
     )
 }
-        )
-    }
-    public func `desEncrypt`(`originData`: String, `hexKey`: String)  -> String {
-        return try! FfiConverterString.lift(
-            try!
+
+
+
+public func `desEncrypt`(`originData`: String, `hexKey`: String)  -> String {
+    return try! FfiConverterString.lift(
+        try!
+    
     rustCall() {
     
-    luffaCrypto_6c6a_Client_des_encrypt(self.pointer, 
+    Luffacrypto_8a81_des_encrypt(
         FfiConverterString.lower(`originData`), 
-        FfiConverterString.lower(`hexKey`), $0
+        FfiConverterString.lower(`hexKey`), $0)
+}
     )
 }
-        )
-    }
-    public func `desDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
-        return try! FfiConverterString.lift(
-            try!
+
+
+
+public func `desDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
+    return try! FfiConverterString.lift(
+        try!
+    
     rustCall() {
     
-    luffaCrypto_6c6a_Client_des_decrypt(self.pointer, 
+    Luffacrypto_8a81_des_decrypt(
         FfiConverterString.lower(`ciphertext`), 
-        FfiConverterString.lower(`hexKey`), $0
+        FfiConverterString.lower(`hexKey`), $0)
+}
     )
 }
-        )
-    }
-    public func `newDesKey`()  -> String {
-        return try! FfiConverterString.lift(
-            try!
+
+
+
+public func `newDesKey`()  -> String {
+    return try! FfiConverterString.lift(
+        try!
+    
     rustCall() {
     
-    luffaCrypto_6c6a_Client_new_des_key(self.pointer, $0
+    Luffacrypto_8a81_new_des_key($0)
+}
     )
 }
-        )
-    }
-    
-}
 
 
-public struct FfiConverterTypeClient: FfiConverter {
-    typealias FfiType = UnsafeMutableRawPointer
-    typealias SwiftType = Client
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Client {
-        let v: UInt64 = try readInt(&buf)
-        // The Rust code won't compile if a pointer won't fit in a UInt64.
-        // We have to go via `UInt` because that's the thing that's the size of a pointer.
-        let ptr = UnsafeMutableRawPointer(bitPattern: UInt(truncatingIfNeeded: v))
-        if (ptr == nil) {
-            throw UniffiInternalError.unexpectedNullPointer
-        }
-        return try lift(ptr!)
-    }
-
-    public static func write(_ value: Client, into buf: inout [UInt8]) {
-        // This fiddling is because `Int` is the thing that's the same size as a pointer.
-        // The Rust code won't compile if a pointer won't fit in a `UInt64`.
-        writeInt(&buf, UInt64(bitPattern: Int64(Int(bitPattern: lower(value)))))
-    }
-
-    public static func lift(_ pointer: UnsafeMutableRawPointer) throws -> Client {
-        return Client(unsafeFromRawPointer: pointer)
-    }
-
-    public static func lower(_ value: Client) -> UnsafeMutableRawPointer {
-        return value.pointer
-    }
-}
 
 /**
  * Top level initializers and tear down methods.
  *
  * This is generated by uniffi.
  */
-public enum LuffaCryptoLifecycle {
+public enum LuffacryptoLifecycle {
     /**
      * Initialize the FFI and Rust library. This should be only called once per application.
      */
