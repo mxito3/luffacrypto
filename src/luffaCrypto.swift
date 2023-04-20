@@ -19,13 +19,13 @@ fileprivate extension RustBuffer {
     }
 
     static func from(_ ptr: UnsafeBufferPointer<UInt8>) -> RustBuffer {
-        try! rustCall { ffi_Luffacrypto_8a81_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
+        try! rustCall { ffi_Luffacrypto_531d_rustbuffer_from_bytes(ForeignBytes(bufferPointer: ptr), $0) }
     }
 
     // Frees the buffer in place.
     // The buffer must not be used after this is called.
     func deallocate() {
-        try! rustCall { ffi_Luffacrypto_8a81_rustbuffer_free(self, $0) }
+        try! rustCall { ffi_Luffacrypto_531d_rustbuffer_free(self, $0) }
     }
 }
 
@@ -318,13 +318,222 @@ fileprivate struct FfiConverterString: FfiConverter {
     }
 }
 
+
+public enum ClientError {
+
+    
+    
+    // Simple error enums only carry a message
+    case CodeParser(message: String)
+    
+    // Simple error enums only carry a message
+    case SendFailed(message: String)
+    
+    // Simple error enums only carry a message
+    case StartFailed(message: String)
+    
+    // Simple error enums only carry a message
+    case SearchError(message: String)
+    
+    // Simple error enums only carry a message
+    case SledError(message: String)
+    
+    // Simple error enums only carry a message
+    case ParseIntError(message: String)
+    
+    // Simple error enums only carry a message
+    case ParseFloatError(message: String)
+    
+    // Simple error enums only carry a message
+    case FromUtf8Error(message: String)
+    
+    // Simple error enums only carry a message
+    case TantivyError(message: String)
+    
+    // Simple error enums only carry a message
+    case SerdeCborError(message: String)
+    
+    // Simple error enums only carry a message
+    case IoError(message: String)
+    
+    // Simple error enums only carry a message
+    case AnyhowError(message: String)
+    
+    // Simple error enums only carry a message
+    case MultibaseError(message: String)
+    
+    // Simple error enums only carry a message
+    case MultihashError(message: String)
+    
+    // Simple error enums only carry a message
+    case Bs58DecodeError(message: String)
+    
+    // Simple error enums only carry a message
+    case DecodingError(message: String)
+    
+    // Simple error enums only carry a message
+    case CustomError(message: String)
+    
+}
+
+public struct FfiConverterTypeClientError: FfiConverterRustBuffer {
+    typealias SwiftType = ClientError
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> ClientError {
+        let variant: Int32 = try readInt(&buf)
+        switch variant {
+
+        
+
+        
+        case 1: return .CodeParser(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 2: return .SendFailed(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 3: return .StartFailed(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 4: return .SearchError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 5: return .SledError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 6: return .ParseIntError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 7: return .ParseFloatError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 8: return .FromUtf8Error(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 9: return .TantivyError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 10: return .SerdeCborError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 11: return .IoError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 12: return .AnyhowError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 13: return .MultibaseError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 14: return .MultihashError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 15: return .Bs58DecodeError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 16: return .DecodingError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+        case 17: return .CustomError(
+            message: try FfiConverterString.read(from: &buf)
+        )
+        
+
+        default: throw UniffiInternalError.unexpectedEnumCase
+        }
+    }
+
+    public static func write(_ value: ClientError, into buf: inout [UInt8]) {
+        switch value {
+
+        
+
+        
+        case let .CodeParser(message):
+            writeInt(&buf, Int32(1))
+            FfiConverterString.write(message, into: &buf)
+        case let .SendFailed(message):
+            writeInt(&buf, Int32(2))
+            FfiConverterString.write(message, into: &buf)
+        case let .StartFailed(message):
+            writeInt(&buf, Int32(3))
+            FfiConverterString.write(message, into: &buf)
+        case let .SearchError(message):
+            writeInt(&buf, Int32(4))
+            FfiConverterString.write(message, into: &buf)
+        case let .SledError(message):
+            writeInt(&buf, Int32(5))
+            FfiConverterString.write(message, into: &buf)
+        case let .ParseIntError(message):
+            writeInt(&buf, Int32(6))
+            FfiConverterString.write(message, into: &buf)
+        case let .ParseFloatError(message):
+            writeInt(&buf, Int32(7))
+            FfiConverterString.write(message, into: &buf)
+        case let .FromUtf8Error(message):
+            writeInt(&buf, Int32(8))
+            FfiConverterString.write(message, into: &buf)
+        case let .TantivyError(message):
+            writeInt(&buf, Int32(9))
+            FfiConverterString.write(message, into: &buf)
+        case let .SerdeCborError(message):
+            writeInt(&buf, Int32(10))
+            FfiConverterString.write(message, into: &buf)
+        case let .IoError(message):
+            writeInt(&buf, Int32(11))
+            FfiConverterString.write(message, into: &buf)
+        case let .AnyhowError(message):
+            writeInt(&buf, Int32(12))
+            FfiConverterString.write(message, into: &buf)
+        case let .MultibaseError(message):
+            writeInt(&buf, Int32(13))
+            FfiConverterString.write(message, into: &buf)
+        case let .MultihashError(message):
+            writeInt(&buf, Int32(14))
+            FfiConverterString.write(message, into: &buf)
+        case let .Bs58DecodeError(message):
+            writeInt(&buf, Int32(15))
+            FfiConverterString.write(message, into: &buf)
+        case let .DecodingError(message):
+            writeInt(&buf, Int32(16))
+            FfiConverterString.write(message, into: &buf)
+        case let .CustomError(message):
+            writeInt(&buf, Int32(17))
+            FfiConverterString.write(message, into: &buf)
+
+        
+        }
+    }
+}
+
+
+extension ClientError: Equatable, Hashable {}
+
+extension ClientError: Error { }
+
 public func `newAesKey`()  -> String {
     return try! FfiConverterString.lift(
         try!
     
     rustCall() {
     
-    Luffacrypto_8a81_new_aes_key($0)
+    Luffacrypto_531d_new_aes_key($0)
 }
     )
 }
@@ -337,7 +546,7 @@ public func `aesEncrypt`(`originData`: String, `hexKey`: String)  -> String {
     
     rustCall() {
     
-    Luffacrypto_8a81_aes_encrypt(
+    Luffacrypto_531d_aes_encrypt(
         FfiConverterString.lower(`originData`), 
         FfiConverterString.lower(`hexKey`), $0)
 }
@@ -352,7 +561,7 @@ public func `aesDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
     
     rustCall() {
     
-    Luffacrypto_8a81_aes_decrypt(
+    Luffacrypto_531d_aes_decrypt(
         FfiConverterString.lower(`ciphertext`), 
         FfiConverterString.lower(`hexKey`), $0)
 }
@@ -367,7 +576,7 @@ public func `desEncrypt`(`originData`: String, `hexKey`: String)  -> String {
     
     rustCall() {
     
-    Luffacrypto_8a81_des_encrypt(
+    Luffacrypto_531d_des_encrypt(
         FfiConverterString.lower(`originData`), 
         FfiConverterString.lower(`hexKey`), $0)
 }
@@ -382,7 +591,7 @@ public func `desDecrypt`(`ciphertext`: String, `hexKey`: String)  -> String {
     
     rustCall() {
     
-    Luffacrypto_8a81_des_decrypt(
+    Luffacrypto_531d_des_decrypt(
         FfiConverterString.lower(`ciphertext`), 
         FfiConverterString.lower(`hexKey`), $0)
 }
@@ -397,7 +606,35 @@ public func `newDesKey`()  -> String {
     
     rustCall() {
     
-    Luffacrypto_8a81_new_des_key($0)
+    Luffacrypto_531d_new_des_key($0)
+}
+    )
+}
+
+
+
+public func `generateAvatar`(`peerId`: String) throws -> String {
+    return try FfiConverterString.lift(
+        try
+    
+    rustCallWithError(FfiConverterTypeClientError.self) {
+    
+    Luffacrypto_531d_generate_avatar(
+        FfiConverterString.lower(`peerId`), $0)
+}
+    )
+}
+
+
+
+public func `generateNickname`(`peerId`: String) throws -> String {
+    return try FfiConverterString.lift(
+        try
+    
+    rustCallWithError(FfiConverterTypeClientError.self) {
+    
+    Luffacrypto_531d_generate_nickname(
+        FfiConverterString.lower(`peerId`), $0)
 }
     )
 }

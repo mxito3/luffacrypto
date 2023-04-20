@@ -46,43 +46,51 @@ typedef struct RustCallStatus {
 // ⚠️ increment the version suffix in all instances of UNIFFI_SHARED_HEADER_V4 in this file.           ⚠️
 #endif // def UNIFFI_SHARED_H
 
-RustBuffer Luffacrypto_8a81_new_aes_key(
+RustBuffer Luffacrypto_531d_new_aes_key(
       
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer Luffacrypto_8a81_aes_encrypt(
+RustBuffer Luffacrypto_531d_aes_encrypt(
       RustBuffer origin_data,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer Luffacrypto_8a81_aes_decrypt(
+RustBuffer Luffacrypto_531d_aes_decrypt(
       RustBuffer ciphertext,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer Luffacrypto_8a81_des_encrypt(
+RustBuffer Luffacrypto_531d_des_encrypt(
       RustBuffer origin_data,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer Luffacrypto_8a81_des_decrypt(
+RustBuffer Luffacrypto_531d_des_decrypt(
       RustBuffer ciphertext,RustBuffer hex_key,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer Luffacrypto_8a81_new_des_key(
+RustBuffer Luffacrypto_531d_new_des_key(
       
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer ffi_Luffacrypto_8a81_rustbuffer_alloc(
+RustBuffer Luffacrypto_531d_generate_avatar(
+      RustBuffer peer_id,
+    RustCallStatus *_Nonnull out_status
+    );
+RustBuffer Luffacrypto_531d_generate_nickname(
+      RustBuffer peer_id,
+    RustCallStatus *_Nonnull out_status
+    );
+RustBuffer ffi_Luffacrypto_531d_rustbuffer_alloc(
       int32_t size,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer ffi_Luffacrypto_8a81_rustbuffer_from_bytes(
+RustBuffer ffi_Luffacrypto_531d_rustbuffer_from_bytes(
       ForeignBytes bytes,
     RustCallStatus *_Nonnull out_status
     );
-void ffi_Luffacrypto_8a81_rustbuffer_free(
+void ffi_Luffacrypto_531d_rustbuffer_free(
       RustBuffer buf,
     RustCallStatus *_Nonnull out_status
     );
-RustBuffer ffi_Luffacrypto_8a81_rustbuffer_reserve(
+RustBuffer ffi_Luffacrypto_531d_rustbuffer_reserve(
       RustBuffer buf,int32_t additional,
     RustCallStatus *_Nonnull out_status
     );
