@@ -1,3 +1,25 @@
+[Error]
+enum ClientError {
+  "CodeParser",
+  "SendFailed",
+  "StartFailed",
+  "SearchError",
+  "SledError",
+  "ParseIntError",
+  "ParseFloatError",
+  "FromUtf8Error",
+  "TantivyError",
+  "SerdeCborError",
+  "IoError",
+  "AnyhowError",
+  "MultibaseError",
+  "MultihashError",
+  "Bs58DecodeError",
+  "DecodingError",
+  "CustomError"
+};
+
+
 namespace Luffacrypto
 {
         string new_aes_key();
@@ -10,4 +32,11 @@ namespace Luffacrypto
 
         string des_decrypt(string ciphertext,string hex_key);
         string new_des_key();
+        
+        [Throws=ClientError]
+        string generate_avatar([ByRef] string peer_id);
+        
+        [Throws=ClientError]
+        string generate_nickname([ByRef] string peer_id);
+
 };

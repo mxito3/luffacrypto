@@ -1,7 +1,11 @@
 use aes_en::AesUtil;
 use des_en::DesUtil;
-mod aes_en;
-mod des_en;
+use crate::avatar_nickname::avatar::generate_avatar;
+use crate::avatar_nickname::nickname::generate_nickname;
+
+pub mod aes_en;
+pub mod des_en;
+pub mod avatar_nickname;
 
 fn new_aes_key() -> String {
     AesUtil::new_key()
