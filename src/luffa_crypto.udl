@@ -22,19 +22,14 @@ enum ClientError {
 
 namespace Luffacrypto
 {
-        
         string new_aes_key();
         string aes_encrypt(string origin_data,string hex_key);
         string aes_decrypt(string ciphertext,string hex_key);
-
-
         string des_encrypt(string origin_data,string hex_key);
         string des_decrypt(string ciphertext,string hex_key);
         string new_des_key();
-        
         [Throws=ClientError]
         string generate_avatar([ByRef] string peer_id);
-        
         [Throws=ClientError]
         string generate_nickname([ByRef] string peer_id);
 

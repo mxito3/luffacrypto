@@ -4,3 +4,6 @@ target/debug
 target/release 
 *.tar.gz
 src/uniffi/
+target/aarch64-linux-android/
+target/armv7-linux-androideabi/
+target/cargo-ndk/

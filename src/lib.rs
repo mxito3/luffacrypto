@@ -32,4 +32,3 @@ fn new_des_key() -> String {
     DesUtil::new_key()
 }
 
-
