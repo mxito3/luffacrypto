@@ -6,7 +6,8 @@ use crate::avatar_nickname::nickname::generate_nickname;
 pub mod aes_en;
 pub mod des_en;
 pub mod avatar_nickname;
-
+pub mod  ecc;
+pub mod keys;
 fn new_aes_key() -> String {
     AesUtil::new_key()
 }

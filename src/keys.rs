@@ -103,12 +103,12 @@ pub struct Keychain{
 
 impl Keychain {
     /// Creates a new Ed25519 based key and stores it.
-    pub  fn create_ed25519_key(&mut self) -> Result<(Keypair)> {
+    pub  fn create_ed25519_key(&mut self) -> Result<Keypair> {
 
         let keypair = ssh_key::private::Ed25519Keypair::random(rand::thread_rng());
         let keypair = Keypair::Ed25519(keypair);
         
-        Ok((keypair))
+        Ok(keypair)
     }
     /// Creates a new Ed25519 based key and stores it.
     pub  fn create_ed25519_key_bip39(&mut self,password:&str) -> Result<(String,Keypair)> {

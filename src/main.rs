@@ -7,7 +7,7 @@ mod keys;
 fn main() {
     // aes_util();
     // des_util();
-    let mut key_chain = Keychain{};
+    let mut key_chain: Keychain = Keychain{};
     // let res: keys::Keypair = key_chain.create_ed25519_key().unwrap();
 
 
